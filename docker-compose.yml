@@ -7,3 +7,4 @@ services:
       - "5173:5173"
     environment:
       - NODE_ENV=production
+      - HOST=0.0.0.0
