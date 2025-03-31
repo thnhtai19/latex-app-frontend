@@ -2,11 +2,15 @@ version: '3.8'
 services:
   app:
     container_name: latex-app-frontend
-    image: node:20
-    build: .
+    image: latex-app-frontend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "5173:4173"
+      - "5173:5173"
     environment:
       - NODE_ENV=production
       - HOST=0.0.0.0
     restart: always
+    volumes:
+      - ./dist:/app/dist
