@@ -10,6 +10,11 @@ export default defineConfig({
     hmr: {
       clientPort: 443,
     },
-    allowedHosts: ["latex.ttdev.id.vn"],
+    allowedHosts: ["all"],
+  },
+  preview: {
+    host: "0.0.0.0",
+    port: 5173,
+    allowedHosts: ["all"],
   },
 });
