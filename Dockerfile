@@ -18,4 +18,4 @@ COPY --from=build /app/package.json ./
 
 EXPOSE 4173
 
-CMD ["yarn", "start"]
+CMD ["yarn", "start", "--host"]
