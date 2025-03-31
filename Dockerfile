@@ -8,16 +8,14 @@ RUN yarn install --frozen-lockfile
 COPY . .
 RUN yarn build
 
-FROM node:20-alpine
+FROM node:20-alpine AS run
 
 WORKDIR /app
 
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/package.json ./  # Cần package.json để yarn start
-COPY --from=build /app/vite.config.js ./  # Copy vite.config.js để cấu hình runtime
-
-RUN yarn add @refinedev/cli vite --frozen-lockfile
+COPY --from=build /app/package.json ./
+COPY --from=build /app/node_modules ./node_modules
 
 EXPOSE 5173
 
-CMD ["yarn", "start", "--host", "--port", "5173"]
+CMD ["yarn", "start", "--host"]
